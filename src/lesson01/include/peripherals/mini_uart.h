@@ -16,4 +16,10 @@
 #define AUX_MU_STAT_REG (PBASE+0x00215064)
 #define AUX_MU_BAUD_REG (PBASE+0x00215068)
 
+
+#define MHZ       *1000000
+#define SYSCLKFRQ 250 MHZ
+#define BAUD_RATE 9600
+#define BAUD_REG  (unsigned int)((SYSCLKFRQ/BAUD_RATE)/8)-1 
+
 #endif  /*_P_MINI_UART_H */
