@@ -14,7 +14,7 @@
 
 
 #define MHZ       *1000000
-#define SYSCLKFRQ 250 MHZ
+#define SYSCLK    250 MHZ
 #define UARTCLK	   48 MHZ
 
 #define BAUD_RATE 9600
