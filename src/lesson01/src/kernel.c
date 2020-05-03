@@ -15,9 +15,9 @@ void kernel_main(int procid)
 	full_uart_send(procid+'0');
 	full_uart_send_string("\r\n");
 
-	while (1) {
-		full_uart_send_string("Hello, from processor ");
-		full_uart_send(procid+'0');
-		full_uart_send_string("\r\n");
+	if(procid == 0) {
+		while (1) {
+			full_uart_send(full_uart_recv());
+		}
 	}
 }
