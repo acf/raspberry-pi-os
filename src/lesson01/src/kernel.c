@@ -1,12 +1,23 @@
 #include "full_uart.h"
+#include "utils.h"
 
-void kernel_main(void)
+unsigned int uart_initialised = 0;
+
+void kernel_main(int procid)
 {
-	full_uart_init();
-	full_uart_send_string("Hello, world!\r\n");
+	if(procid == 0) {
+		full_uart_init();
+	} else {
+		delay(100000 * procid);
+	}	
+	
+	full_uart_send_string("Hello, from processor ");
+	full_uart_send(procid+'0');
+	full_uart_send_string("\r\n");
 
 	while (1) {
-	//	uart_send(uart_recv());
-		full_uart_send_string("Hello, again!\r\n");
+		full_uart_send_string("Hello, from processor ");
+		full_uart_send(procid+'0');
+		full_uart_send_string("\r\n");
 	}
 }
